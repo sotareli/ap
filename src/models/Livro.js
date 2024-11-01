@@ -11,8 +11,5 @@ const livroSchema = new mongoose.Schema({
 
 const livro = mongoose.model("livros", livroSchema);
 
-
-//testando o comite no git
-
 export default livro;
 
