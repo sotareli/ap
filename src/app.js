@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import conectaNaDatabase from "./config/dbConnect.js";
 import routes from "./routes/index.js";
 
@@ -13,22 +14,7 @@ conexao.once("open", () => {
 });
 
 const app = express();
+app.use(cors());
 routes(app);
-
-
-
-app.delete("/livros/:id", (req,res) => {
-    const index = buscaLivro(req.params.id);
-    console.log(index);
-
-    if(index > -1 ){
-        livros.splice(index, 1);
-        res.status(200).send("Livro deletado com sucesso!");
-    }else {
-        res.status(500).send("Livro não encontrado");
-    }
-
-
-});
 
 export default app;
